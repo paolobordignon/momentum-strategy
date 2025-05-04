@@ -29,3 +29,14 @@ def plot_close_and_momentum(data: pd.DataFrame, ticker: str):
 
     plt.tight_layout()
     plt.show()
+
+def plot_strategy_vs_buy_hold(data: pd.DataFrame, ticker: str):
+    plt.figure(figsize=(12, 6))
+    plt.plot(data.index, data["Cumulative_Buy_Hold"], label="Buy & Hold", linestyle="--")
+    plt.plot(data.index, data["Cumulative_Strategy"], label="Momentum Strategy")
+    plt.title(f"Momentum Strategy vs Buy & Hold: {ticker}")
+    plt.xlabel("Date")
+    plt.ylabel("Cumulative Return")
+    plt.legend()
+    plt.tight_layout()
+    plt.show()

@@ -3,6 +3,8 @@ import argparse
 from src.data_fetching import fetch_stock_data
 from src.indicators import compute_momentum
 from src.visualization import plot_close_and_momentum
+from src.strategy import apply_momentum_strategy
+from src.visualization import plot_strategy_vs_buy_hold
 
 
 if __name__ == "__main__": #This line ensures that the code inside the block only runs when the file is executed directly, not when it’s imported as a module.
@@ -24,4 +26,8 @@ if __name__ == "__main__": #This line ensures that the code inside the block onl
     df = compute_momentum(df, window)
     plot_close_and_momentum(df, ticker)
 
+    # Apply strategy
+    data = apply_momentum_strategy(df)
 
+    # Plot strategy vs buy-and-hold
+    plot_strategy_vs_buy_hold(data, ticker)
